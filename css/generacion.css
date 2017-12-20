@@ -1,0 +1,86 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+
+header {
+  background: #fffdfd;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+header > img {
+  float: left;
+  padding-top: 15px;
+  width: 30%;
+}
+
+header > .regresar {
+  background-color: #faae27;
+  display: inline-block;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-right: 40px;
+	float: right;
+  padding: 10px;
+  text-align: center;
+}
+
+#table_div {
+  text-align: center;
+
+}
+
+#table_div2{
+  text-align: center;
+}
+
+#table_div3{
+ text-align: center;
+}
+
+#table_div4{
+  text-align: center;
+}
+
+#table_div5{
+  text-align: center;
+}
+
+#table_div6{
+  text-align: center;
+}
+
+#table_div7{
+  text-align: center;
+}
+
+#table_div8{
+  text-align: center;
+}
+
+
+
+.regresar > a {
+ color: black;
+ list-style: none;
+ text-decoration: none;
+}
+
+.datos {
+ color:#f2652f;
+ font-size: 30px;
+ height: 50px;
+ text-align: center;
+ width: 100%;
+margin-bottom: 70px;
+}
+
+.alumnas {
+ height: 50px;
+ padding-bottom:10px;
+ text-align: center;
+ width: 100%;
+}

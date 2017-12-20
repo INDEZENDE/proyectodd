@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Data Dashboard</title>
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+
+
+  <body>
+    <header>
+       <img src="./assets/images/logo.png" alt="">
+       <div class="accesos">
+         <a href="views/students.html">Students</a>
+         <a href="">Teachers</a>
+       </div>
+    </header>
+    <section id="menu" class="clear">
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <ul class="mi-menu">
+  <li><a href="">CDMX</a>
+    <ul>
+      <li><a href="views/cdmx2017-1.html">2017-I</a></li>
+      <li><a href="views/cdmx2017-2.html">2017-II</a></li>
+    </ul>
+  </li>
+  <li><a href="">AQP</a>
+    <ul>
+      <li><a href="views/aqp2016-2.html">2016-II</a></li>
+      <li><a href="views/aqp2017-1.html">2017-I</a></li>
+    </ul>
+  </li>
+  <li><a href="">LIMA</a>
+    <ul>
+      <li><a href="views/lima2016-2.html">2016-II</a></li>
+      <li><a href="views/lima2017-1.html">2017-I</a></li>
+      <li><a href="views/lima2017-2.html">2017-II</a></li>
+    </ul>
+  </li>
+  <li><a href="">SCL</a>
+    <ul>
+      <li><a href="views/scl2016-2.html">2016-II</a></li>
+      <li><a href="views/scl2017-1.html">2017-I</a></li>
+      <li><a href="views/scl2017-2.html">2017-II</a></li>
+    </ul>
+  </li>
+</ul>
+    </section>
+<!--Gráfica 1-->
+    <section id="columnchart_values" class="clear">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data =  google.visualization.arrayToDataTable([
+            ['generacion', 'estudiantes', {role: 'style'}],
+            ['AREQUIPA 2016-2', alumnasAQP20162, 'color:#337AB7'],
+            ['AREQUIPA 2017-1', alumnasAQP20171, 'color:#337AB7'],
+            ['CIUDAD DE MÉXICO 2017-1', alumnasCDMX20171, 'color:5CB85C'],
+            ['CIUDAD DE MÉXICO 2017-2', alumnasCDMX20172, 'color:5CB85C'],
+            ['LIMA-2016-2',alumnasLIM20162, 'color:31B0D5' ],
+            ['LIMA-2017-1',alumnasLIM20171, 'color:31B0D5' ],
+            ['LIMA-2017-2', alumnasLIM20172, 'color:31B0D5'],
+            ['SANTIAGO DE CHILE 2016-2', alumnasSCL20162, 'color:#D9534F'],
+            ['SANTIAGO DE CHILE 2017-1', alumnasSCL20171, 'color:#D9534F'],
+            ['SANTIAGO DE CHILE 2017-2', alumnasSCL20172, 'color:#D9534F'],      ]);
+
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            { calc: "stringify",
+              sourceColumn: 1,
+              type: "string",
+              role: "annotation" },
+              2]);
+
+
+        var options = {
+          title: "El total de estudiantes presentes por sede y generación.",
+          width: 1100,
+          height: 400,
+          bar: {groupWidth: "70%"},
+          legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+        chart.draw(view, options);
+        }
+        </script>
+        <div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+    </section>
+<div class="separacion-line"> </div>
+<!--Gráfica 2-->
+    <section id="columnchart_values2">
+      <script type="text/javascript">
+        google.charts.load("current", {packages:['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+        var data =  google.visualization.arrayToDataTable([
+            ['generacion', 'estudiantes', {role: 'style'}],
+            ['AREQUIPA 2016-2', activePercentAQP20162 , 'color:#337AB7'],
+            ['AREQUIPA 2017-1', activePercentAQP20171, 'color:#337AB7'],
+            ['CIUDAD DE MÉXICO 2017-1', activePercentCDMX20171, 'color:5CB85C'],
+            ['CIUDAD DE MÉXICO 2017-2', activePercentCDMX20172, 'color:5CB85C'],
+            ['LIMA-2016-2',activePercentLIM20162, 'color:31B0D5' ],
+            ['LIMA-2017-1',activePercentLIM20171, 'color:31B0D5' ],
+            ['LIMA-2017-2', activePercentLIM20172, 'color:31B0D5'],
+            ['SANTIAGO DE CHILE 2016-2', activePercentSCL20162, 'color:#D9534F'],
+            ['SANTIAGO DE CHILE 2017-1', activePercentSCL20171, 'color:#D9534F'],
+            ['SANTIAGO DE CHILE 2017-2', activePercentSCL20172, 'color:#D9534F'],      ]);
+
+
+        var view = new google.visualization.DataView(data);
+        view.setColumns([0, 1,
+            { calc: "stringify",
+              sourceColumn: 1,
+              type: "string",
+              role: "annotation" },
+              2]);
+
+        var options = {
+          title: "El porcentaje de deserción de estudiantes.",
+          width: 1100,
+          height: 400,
+          bar: {groupWidth: "70%"},
+          legend: { position: "none" },
+        };
+        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values2"));
+        chart.draw(view, options);
+        }
+        </script>
+<div class="separacion-line"> </div>
+        <div id="columnchart_values2" style="width: 900px; height: 300px;"></div>
+    </section>
+
+
+    <div class="separacion-line"> </div>
+<!--Gráfica 3-->
+        <section id="columnchart_values3">
+
+
+          <script type="text/javascript">
+            google.charts.load("current", {packages:['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+            var data =  google.visualization.arrayToDataTable([
+                ['generacion', 'estudiantes', {role: 'style'}],
+                ['AREQUIPA 2016-2', supTechHseAQP20162, 'color:#337AB7'],
+                ['AREQUIPA 2017-1', supTechHseAQP20171, 'color:#337AB7'],
+                ['CIUDAD DE MÉXICO 2017-1', supTechHseCDMX20171, 'color:5CB85C'],
+                ['CIUDAD DE MÉXICO 2017-2', supTechHseCDMX20172, 'color:5CB85C'],
+                ['LIMA-2016-2',supTechHseLIM20162, 'color:31B0D5' ],
+                ['LIMA-2017-1',supTechHseLIM20171, 'color:31B0D5' ],
+                ['LIMA-2017-2', supTechHseLIM20172, 'color:31B0D5'],
+                ['SANTIAGO DE CHILE 2016-2', supTechHseSCL20162, 'color:#D9534F'],
+                ['SANTIAGO DE CHILE 2017-1', supTechHseSCL20171, 'color:#D9534F'],
+                ['SANTIAGO DE CHILE 2017-2', supTechHseSCL20172, 'color:#D9534F'],      ]);
+
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                { calc: "stringify",
+                  sourceColumn: 1,
+                  type: "string",
+                  role: "annotation" },
+                  2]);
+
+
+            var options = {
+              title: "La cantidad de estudiantes que superan la meta de puntos en promedio de todos los sprints cursados. La meta de puntos es 70% del total de puntos en HSE y en tech. ",
+              width: 1100,
+              height: 400,
+              bar: {groupWidth: "70%"},
+              legend: { position: "none" },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values3"));
+            chart.draw(view, options);
+            }
+            </script>
+            <div id="columnchart_values3" style="width: 900px; height: 300px;"></div>
+        </section>
+        <div class="separacion-line"> </div>
+<!--Gráfica 4-->
+                <section id="columnchart_values4">
+                  <script type="text/javascript">
+                    google.charts.load("current", {packages:['corechart']});
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                    var data =  google.visualization.arrayToDataTable([
+                        ['generacion', 'estudiantes', {role: 'style'}],
+                        ['AREQUIPA 2016-2', percentTotalAQP20162, 'color:#337AB7'],
+                        ['AREQUIPA 2017-1', percentTotalAQP20171, 'color:#337AB7'],
+                        ['CIUDAD DE MÉXICO 2017-1', percentTotalCDMX20171, 'color:5CB85C'],
+                        ['CIUDAD DE MÉXICO 2017-2', percentTotalCDMX20172, 'color:5CB85C'],
+                        ['LIMA-2016-2',percentTotalLIM20162, 'color:31B0D5' ],
+                        ['LIMA-2017-1',percentTotalLIM20171, 'color:31B0D5' ],
+                        ['LIMA-2017-2', percentTotalLIM20172, 'color:31B0D5'],
+                        ['SANTIAGO DE CHILE 2016-2', percentTotalSCL20162, 'color:#D9534F'],
+                        ['SANTIAGO DE CHILE 2017-1', percentTotalSCL20171, 'color:#D9534F'],
+                        ['SANTIAGO DE CHILE 2017-2', percentTotalSCL20172, 'color:#D9534F'],      ]);
+
+
+                    var view = new google.visualization.DataView(data);
+                    view.setColumns([0, 1,
+                        { calc: "stringify",
+                          sourceColumn: 1,
+                          type: "string",
+                          role: "annotation" },
+                          2]);
+
+
+                    var options = {
+                      title: "El porcentaje que representa el dato anterior en relación al total de estudiantes.",
+                      width: 1100,
+                      height: 400,
+                      bar: {groupWidth: "70%"},
+                      legend: { position: "none" },
+                    };
+                    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values4"));
+                    chart.draw(view, options);
+                    }
+                    </script>
+                    <div id="columnchart_values4" style="width: 900px; height: 300px;"></div>
+                </section>
+<div class="separacion-line"> </div>
+<!--Gráfica 5-->
+                        <section id="columnchart_values5">
+                          <script type="text/javascript">
+                            google.charts.load("current", {packages:['corechart']});
+                            google.charts.setOnLoadCallback(drawChart);
+                            function drawChart() {
+                            var data =  google.visualization.arrayToDataTable([
+                                ['generacion', 'estudiantes', {role: 'style'}],
+                                ['AREQUIPA 2016-2', nps_AQP2016_2, 'color:#337AB7'],
+                                ['AREQUIPA 2017-1', nps_AQP2017_1, 'color:#337AB7'],
+                                ['CIUDAD DE MÉXICO 2017-1', nps_CDMX2017_1, 'color:5CB85C'],
+                                ['CIUDAD DE MÉXICO 2017-2', nps_CDMX2017_2, 'color:5CB85C'],
+                                ['LIMA-2016-2',nps_LIM2016_2, 'color:31B0D5' ],
+                                ['LIMA-2017-1',nps_LIM2017_1, 'color:31B0D5' ],
+                                ['LIMA-2017-2', nps_LIM2017_2, 'color:31B0D5'],
+                                ['SANTIAGO DE CHILE 2016-2', nps_SCL2016_2, 'color:#D9534F'],
+                                ['SANTIAGO DE CHILE 2017-1',nps_SCL2017_1, 'color:#D9534F'],
+                                ['SANTIAGO DE CHILE 2017-2', nps_SCL2017_2, 'color:#D9534F'],      ]);
+
+
+                            var view = new google.visualization.DataView(data);
+                            view.setColumns([0, 1,
+                                { calc: "stringify",
+                                  sourceColumn: 1,
+                                  type: "string",
+
+
+                                  role: "annotation" },
+                                  2]);
+
+
+                            var options = {
+                              title: "El Net Promoter Score (NPS) promedio de los sprints cursados. El NPS se calcula en base a la encuesta que las estudiantes responden al respecto de la recomendación que darían de Laboratoria,",
+                              width: 1100,
+                              height: 400,
+                              legend: { position: "none", },
+                            };
+                            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values5"));
+                            chart.draw(view, options);
+                            }
+                            </script>
+                            <div id="columnchart_values5" style="width: 900px; height: 300px;"></div>
+                        </section>
+
+                        <!--Gráfica 6-->
+                        <section id="columnchart_values6">
+
+
+                              <script type="text/javascript">
+                                google.charts.load('current', {'packages':['corechart']});
+                                google.charts.setOnLoadCallback(drawVisualization);
+
+
+                                function drawVisualization() {
+                                      // Some raw data (not necessarily accurate)
+                                  var data = google.visualization.arrayToDataTable([
+                                    ['SPRINT',       'AQP 2016-2',           'AQP 2017-1',           'CDMX 2017-1',           'CDMX 2017-2',             'LIM 2016-1',             'LIM 2017-1',             'LIM 2017-2',             'SCL 2016-2',             'SCL 2017-1',             'SCL 2017-2',            'promedio'],
+                                    ['Primero', contSupTechAQP2016_2_S1, contSupTechAQP2017_1_S1, contSupTechCDMX2017_1_S1, contSupTechCDMX2017_2_S1, contSupTechLIM2016_2_S1, contSupTechLIM2017_1_S1, contSupTechLIM2017_2_S1, contSupTechSCL2016_2_S1, contSupTechSCL2017_1_S1, contSupTechSCL2017_2_S1,      averageContTechS1 ],
+                                    ['Segundo', contSupTechAQP2016_2_S2, contSupTechAQP2017_1_S2, contSupTechCDMX2017_1_S2, contSupTechCDMX2017_2_S2, contSupTechLIM2016_2_S2, contSupTechLIM2017_1_S2, contSupTechLIM2017_2_S2, contSupTechSCL2016_2_S2, contSupTechSCL2017_1_S2, contSupTechSCL2017_2_S2,      averageContTechS2],
+                                    ['Tercero', contSupTechAQP2016_2_S3, contSupTechAQP2017_1_S3, contSupTechCDMX2017_1_S3,          null,                      null,                   null,                      null,         contSupTechSCL2016_2_S3,         null,                         null,            averageContTechS3],
+                                    ['Cuarto',  contSupTechAQP2016_2_S4,         null,                      null,                    null,                      null,                   null,                      null,         contSupTechSCL2016_2_S4,         null,                         null,            averageContTechS4]
+                                ]);
+
+
+                              var options = {
+                                title : 'La cantidad y el porcentaje que representa el total de estudiantes que superan la meta de puntos técnicos en promedio y por sprint.',
+                                vAxis: {title: 'SPRINT'},
+                                hAxis: {title: 'Alumnas'},
+
+
+                                seriesType: 'bars',
+                                series: {10: {type: 'line'}}
+                              };
+
+
+                              var chart = new google.visualization.ComboChart(document.getElementById('columnchart_values6'));
+                              chart.draw(data, options);
+                            }
+                              </script>
+
+
+                                <div id="columnchart_values6" style="width: 900px; height: 300px;"></div></section>
+<div class="separacion-line"> </div>
+    <!--Gráfica 7-->
+                      <section id="columnchart_values7">
+
+
+                            <script type="text/javascript">
+                              google.charts.load('current', {'packages':['corechart']});
+                              google.charts.setOnLoadCallback(drawVisualization);
+
+
+                              function drawVisualization() {
+                                // Some raw data (not necessarily accurate)
+                                var data = google.visualization.arrayToDataTable([
+                                  ['SPRINT',       'AQP 2016-2',           'AQP 2017-1',           'CDMX 2017-1',           'CDMX 2017-2',             'LIM 2016-1',             'LIM 2017-1',             'LIM 2017-2',             'SCL 2016-1',             'SCL 2017-1',             'SCL 2017-2',      'promedio'],
+                                  ['Primero', contSupHseAQP2016_2_S1, contSupHseAQP2017_1_S1, contSupHseCDMX2017_1_S1, contSupHseCDMX2017_2_S1, contSupHseLIM2016_2_S1, contSupHseLIM2017_1_S1, contSupHseLIM2017_2_S1, contSupHseSCL2016_2_S1, contSupHseSCL2017_1_S1, contSupHseSCL2017_2_S1,                averageContHseS1],
+                                  ['Segundo', contSupHseAQP2016_2_S2, contSupHseAQP2017_1_S2, contSupHseCDMX2017_1_S2, contSupHseCDMX2017_2_S2, contSupHseLIM2016_2_S2, contSupHseLIM2017_1_S2, contSupHseLIM2017_2_S2, contSupHseSCL2016_2_S2, contSupHseSCL2017_1_S2, contSupHseSCL2017_2_S2,                averageContHseS2],
+                                  ['Tercero', contSupHseAQP2016_2_S3, contSupHseAQP2017_1_S3, contSupHseCDMX2017_1_S3,          0,                      0,                        0,                           0,            contSupHseSCL2016_2_S3,              0,                         0,                averageContHseS3],
+                                  ['Cuarto',  contSupHseAQP2016_2_S4,         0,                      0,                        0,                      0,                        0,                           0,            contSupHseSCL2016_2_S4,              0,                         0,                averageContHseS4]
+                              ]);
+
+
+                            var options = {
+                              title : 'La cantidad y el porcentaje que representa el total de estudiantes que superan la meta de puntos HSE en promedio y por sprint.',
+                              vAxis: {title: 'SPRINT'},
+                              hAxis: {title: 'Alumnas'},
+
+
+                              seriesType: 'bars',
+                                        series: {10: {type: 'line'}}
+                            };
+
+
+                            var chart = new google.visualization.ComboChart(document.getElementById('columnchart_values7'));
+                            chart.draw(data, options);
+                          }
+                            </script>
+                            <div id="columnchart_values7" style="width: 900px; height: 300px;"></div></section>
+  <div class="separacion-line"> </div>
+  <!--Gráfica 8-->
+  <section id="columnchart_values8">
+
+
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawVisualization);
+
+
+          function drawVisualization() {
+            // Some raw data (not necessarily accurate)
+            var data = google.visualization.arrayToDataTable([
+              ['SPRINT',       'AQP 2016-2',           'AQP 2017-1',                  'CDMX 2017-1',           'CDMX 2017-2',             'LIM 2016-1',             'LIM 2017-1',             'LIM 2017-2',                     'SCL 2016-1',             'SCL 2017-1',             'SCL 2017-2',      'promedio'],
+              ['Primero', pointsTeacherAQP2016_2_S1, pointsTeacherAQP2017_1_S1, pointsTeacherCDMX2017_1_S1, pointsTeacherCDMX2017_2_S1, pointsTeacherLIM2016_2_S1, pointsTeacherLIM2017_1_S1, pointsTeacherLIM2017_2_S1, pointsTeacherSCL2016_2_S1, pointsTeacherSCL2017_1_S1, pointsTeacherSCL2017_2_S1,               averageTeacherTotalesS1],
+              ['Segundo', pointsTeacherAQP2016_2_S2, pointsTeacherAQP2017_1_S2, pointsTeacherCDMX2017_1_S2, pointsTeacherCDMX2017_2_S2, pointsTeacherLIM2016_2_S2, pointsTeacherLIM2017_1_S2, pointsTeacherLIM2017_2_S2, pointsTeacherSCL2016_2_S2, pointsTeacherSCL2017_1_S2, pointsTeacherSCL2017_2_S2,               averageTeacherTotalesS2],
+              ['Tercero', pointsTeacherAQP2016_2_S3, pointsTeacherAQP2017_1_S3, pointsTeacherCDMX2017_1_S3,          0,                      0,                        0,                           0,                   pointsTeacherSCL2016_2_S3,              0,                         0,               averageTeacherTotalesS3],
+              ['Cuarto',  pointsTeacherAQP2016_2_S4,         0,                      0,                              0,                      0,                        0,                           0,                   pointsTeacherSCL2016_2_S4,              0,                         0,               averageTeacherTotalesS4]
+          ]);
+
+
+        var options = {
+          title : 'La puntuación promedio de l@s profesores.',
+          vAxis: {title: 'SPRINT'},
+          hAxis: {title: 'Alumnas'},
+
+
+          seriesType: 'bars',
+                    series: {10: {type: 'line'}}
+        };
+
+
+        var chart = new google.visualization.ComboChart(document.getElementById('columnchart_values8'));
+        chart.draw(data, options);
+      }
+        </script>
+        <div id="columnchart_values8" style="width: 900px; height: 300px;"></div></section>
+
+
+  <div class="separacion-line"> </div>
+
+
+  <!--Gráfica 9-->
+  <section id="columnchart_values9">
+
+
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawVisualization);
+
+
+          function drawVisualization() {
+            // Some raw data (not necessarily accurate)
+            var data = google.visualization.arrayToDataTable([
+              ['SPRINT',       'AQP 2016-2',           'AQP 2017-1',            'CDMX 2017-1',           'CDMX 2017-2',          'LIM 2016-1',             'LIM 2017-1',             'LIM 2017-2',         'SCL 2016-1',             'SCL 2017-1',         'SCL 2017-2',              'promedio'],
+              ['Primero', pointsJediAQP2016_2_S1, pointsJediAQP2017_1_S1, pointsJediCDMX2017_1_S1, pointsJediCDMX2017_2_S1, pointsJediLIM2016_2_S1, pointsJediLIM2017_1_S1, pointsJediLIM2017_2_S1, pointsJediSCL2016_2_S1, pointsJediSCL2017_1_S1, pointsJediSCL2017_2_S1,          averageJediTotalesS1],
+              ['Segundo', pointsJediAQP2016_2_S2, pointsJediAQP2017_1_S2, pointsJediCDMX2017_1_S2, pointsJediCDMX2017_2_S2, pointsJediLIM2016_2_S2, pointsJediLIM2017_1_S2, pointsJediLIM2017_2_S2, pointsJediSCL2016_2_S2, pointsJediSCL2017_1_S2, pointsJediSCL2017_2_S2,          averageJediTotalesS2],
+              ['Tercero', pointsJediAQP2016_2_S3, pointsJediAQP2017_1_S3, pointsJediCDMX2017_1_S3,          0,                      0,                        0,                           0,       pointsJediSCL2016_2_S3,              0,                         0,               averageJediTotalesS3],
+              ['Cuarto',  pointsJediAQP2016_2_S4,         0,                      0,                        0,                      0,                        0,                           0,       pointsJediSCL2016_2_S4,              0,                         0,               averageJediTotalesS4]
+          ]);
+
+
+        var options = {
+          title : 'La puntuación promedio de l@s Jedi master.',
+          vAxis: {title: 'SPRINT'},
+          hAxis: {title: 'Alumnas'},
+
+
+          seriesType: 'bars',
+                    series: {10: {type: 'line'}}
+        };
+
+
+        var chart = new google.visualization.ComboChart(document.getElementById('columnchart_values9'));
+        chart.draw(data, options);
+      }
+        </script>
+        <div id="columnchart_values9" style="width: 900px; height: 300px;"></div></section>
+
+
+  <div class="separacion-line"> </div>
+
+<!-- Base de datos -->
+<script src="./js/data.js"></script>
+<!-- Aquí va tus archivos JS -->
+    <script src="./js/app.js"></script>
+  </body>
+</html>
